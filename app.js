@@ -8,6 +8,9 @@ app.use('/files', express.static('public/files'))
 const mediaRouter = require('./routers/media.routers')
 
 app.use('/api/v1', mediaRouter)
+app.use((req, res, next) => {
+    res.status(404).send('path not found');
+  });
 
 const {PORT = 3000} = process.env
 
